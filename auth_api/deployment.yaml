@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mi-api-fastapi
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mi-api-fastapi
+  template:
+    metadata:
+      labels:
+        app: mi-api-fastapi
+    spec:
+      containers:
+      - name: mi-api-fastapi
+        image: mi-api-fastapi
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DATABASE_URL
+          value: "mysql+pymysql://root:baldrat@mysql-db/auth_db"

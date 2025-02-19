@@ -1,0 +1,133 @@
+{
+  "database": "auth_db",
+  "tables": {
+    "users": {
+      "fields": {
+        "user_id": {
+          "type": "INT",
+          "key": "PK",
+          "constraints": "AUTO_INCREMENT, NOT NULL",
+          "description": "Identificador único del usuario."
+        },
+        "username": {
+          "type": "VARCHAR(50)",
+          "key": "UNIQUE",
+          "constraints": "NOT NULL",
+          "description": "Nombre de usuario único."
+        },
+        "email": {
+          "type": "VARCHAR(100)",
+          "key": "UNIQUE",
+          "constraints": "NOT NULL",
+          "description": "Correo electrónico del usuario."
+        },
+        "password_hash": {
+          "type": "TEXT",
+          "key": "",
+          "constraints": "NOT NULL",
+          "description": "Contraseña almacenada en formato hash."
+        },
+        "role": {
+          "type": "ENUM('student', 'professor', 'admin')",
+          "key": "",
+          "constraints": "DEFAULT 'student', NOT NULL",
+          "description": "Define el rol del usuario en la plataforma."
+        },
+        "created_at": {
+          "type": "TIMESTAMP",
+          "key": "",
+          "constraints": "DEFAULT CURRENT_TIMESTAMP",
+          "description": "Fecha de creación de la cuenta."
+        },
+        "updated_at": {
+          "type": "TIMESTAMP",
+          "key": "",
+          "constraints": "DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP",
+          "description": "Fecha de última actualización."
+        }
+      }
+    },
+    "password_reset_tokens": {
+      "fields": {
+        "token_id": {
+          "type": "INT",
+          "key": "PK",
+          "constraints": "AUTO_INCREMENT, NOT NULL",
+          "description": "Identificador único del token."
+        },
+        "user_id": {
+          "type": "INT",
+          "key": "FK",
+          "constraints": "NOT NULL, REFERENCES users(user_id) ON DELETE CASCADE",
+          "description": "ID del usuario asociado."
+        },
+        "token": {
+          "type": "VARCHAR(255)",
+          "key": "UNIQUE",
+          "constraints": "NOT NULL",
+          "description": "Token único de recuperación."
+        },
+        "expires_at": {
+          "type": "TIMESTAMP",
+          "key": "",
+          "constraints": "NOT NULL",
+          "description": "Fecha de expiración del token."
+        }
+      }
+    },
+    "sessions": {
+      "fields": {
+        "session_id": {
+          "type": "VARCHAR(255)",
+          "key": "PK",
+          "constraints": "UNIQUE, NOT NULL",
+          "description": "Identificador único de la sesión."
+        },
+        "user_id": {
+          "type": "INT",
+          "key": "FK",
+          "constraints": "NOT NULL, REFERENCES users(user_id) ON DELETE CASCADE",
+          "description": "Usuario autenticado."
+        },
+        "ip_address": {
+          "type": "VARCHAR(45)",
+          "key": "",
+          "constraints": "NOT NULL",
+          "description": "Dirección IP desde donde inició sesión."
+        },
+        "user_agent": {
+          "type": "TEXT",
+          "key": "",
+          "constraints": "NOT NULL",
+          "description": "Información del navegador/dispositivo."
+        },
+        "created_at": {
+          "type": "TIMESTAMP",
+          "key": "",
+          "constraints": "DEFAULT CURRENT_TIMESTAMP",
+          "description": "Fecha y hora de inicio de sesión."
+        },
+        "expires_at": {
+          "type": "TIMESTAMP",
+          "key": "",
+          "constraints": "NOT NULL",
+          "description": "Fecha de expiración de la sesión."
+        }
+      }
+    }
+  },
+  "relations": {
+    "password_reset_tokens": {
+      "user_id": {
+        "references": "users(user_id)",
+        "relation": "One-to-Many"
+      }
+    },
+    "sessions": {
+      "user_id": {
+        "references": "users(user_id)",
+        "relation": "One-to-Many"
+      }
+    }
+  }
+}

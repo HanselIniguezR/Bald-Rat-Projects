@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+    <div class="container" id="container">
+            <section class="form-container sign-up-container">
+             <form action="#" onsubmit="showPopup(); return false;">
+                <h1>Crear cuenta</h1>
+                <div class="social-container">
+                    <a href="#" class="social" aria-label="Regístrate con Google"><i class="fab fa-google-plus-g" aria-hidden="true"></i></a>
+                </div>
+                <span for="signup-name" class="visually-hidden">Selecciona una plataforma o llena el registro</span>
+                <input id="signup-name" type="text" placeholder="Nombre" aria-label="Nombre" required/>
+                <input id="signup-email" type="email" placeholder="Correo Electrónico" aria-label="Correo Electrónico" required/>
+                <input id="signup-password" type="password" placeholder="Contraseña" aria-label="Contraseña" required/>
+                
+                <button type="submit" aria-label="Crear cuenta">Crear</button>
+            </form>
+            </section>
+        <section class="form-container sign-in-container">
+            <form action="AAA.html">
+                <h1>Iniciar Sesión</h1>
+                <div class="social-container">
+                    <a href="#" class="social" aria-label="Inicia sesión con Google"><i class="fab fa-google-plus-g" aria-hidden="true"></i></a>
+                </div>
+                <span for="signin-email" class="visually-hidden">Selecciona una plataforma o llena los datos</span>
+                <input id="signin-email" type="email" placeholder="Correo Electrónico" aria-label="Correo Electrónico" required/>
+                <input id="signin-password" type="password" placeholder="Contraseña" aria-label="Contraseña" required/>
+                
+                <a href="getPassword.html" aria-label="¿Olvidaste tu contraseña?">¿Olvidaste tu contraseña?</a>
+                <button type="submit" aria-label="Iniciar sesión">Iniciar Sesión</button>
+            </form>
+        </section>
+        <section class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>¡Únete a nuestra comunidad!</h1>
+                    <p>Regístrate para descubrir proyectos, colaborar con expertos y contribuir al conocimiento académico.</p>
+                    <button class="ghost" id="signIn" aria-label="Iniciar Sesión">Iniciar Sesión</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>¡Bienvenido a Bald Rat Projects!</h1>
+                    <p>Accede a la plataforma para gestionar tus proyectos, postularte a nuevas oportunidades y colaborar con la comunidad académica.</p>
+                    <button class="ghost" id="signUp" aria-label="Crear Cuenta">Crear Cuenta</button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</main>
+<div id="popup" class="popup">
+    <div class="popup-content" >
+        <span class="close" onclick="closePopup()">&times;</span>
+        <p>¡Tu cuenta ha sido creada exitosamente!</p>
+    </div>
+</div>
+    <script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fastapi
+  template:
+    metadata:
+      labels:
+        app: fastapi
+    spec:
+      initContainers:
+        - name: check-mysql-ready
+          image: busybox
+          command: ['sh', '-c', 'until nc -z mysql-service 3306; do echo waiting for database; sleep 2; done;']
+      containers:
+        - name: fastapi
+          image: mi-api-fastapi:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: DATABASE_URL
+              value: "mysql://root:baldrat@mysql-service/db_auth"
+          ports:
+            - containerPort: 8000

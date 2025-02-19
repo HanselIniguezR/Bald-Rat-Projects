@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: baldrat
+      MYSQL_DATABASE: db_auth
+    ports:
+      - "3306:3306"
+
+  api:
+    build: .
+    container_name: mi-api-fastapi
+    depends_on:
+      - mysql
+    environment:
+      DATABASE_URL: "mysql+pymysql://root:baldrat@mysql-db/db_auth"
+    ports:
+      - "8000:8000"

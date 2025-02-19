@@ -1,0 +1,26 @@
+# Framework principal
+fastapi==0.100.0 
+
+# Servidor ASGI
+uvicorn==0.23.0 
+
+# Base de datos y ORM
+sqlalchemy==2.0.19
+mysql-connector-python==8.0.33
+pymysql
+
+fastapi-mail
+cryptography
+
+
+# Seguridad y autenticación
+passlib==1.7.4  # Para hashear contraseñas con bcrypt
+bcrypt==4.0.1  # Soporte adicional para hashing seguro
+python-jose==3.3.0  # JWT para autenticación
+python-dotenv==1.0.0  # Cargar variables de entorno desde .env
+
+# Validación de datos
+pydantic==2.1.1 
+
+# Cliente HTTP para pruebas
+httpx==0.24.1
