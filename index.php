@@ -23,19 +23,24 @@ $notificaciones = [
             padding: 0;
             background-color: #f9f9f9;
         }
-        .main-layout {
-            display: flex;
-            height: 100vh;
+        .content {
+            padding: 20px;
         }
-        .sidebar {
-            width: 250px;
+        .navbar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .navbar a {
             background-color: #6DB50A;
             color: white;
-            padding: 20px;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
         }
-        .content {
-            flex-grow: 1;
-            padding: 20px;
+        .navbar a:hover {
+            background-color: #49ADA5;
         }
         .welcome-message {
             font-size: 24px;
@@ -44,6 +49,9 @@ $notificaciones = [
             color: white;
             padding: 20px;
             border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         .summary-cards {
             display: flex;
@@ -86,64 +94,41 @@ $notificaciones = [
             margin-bottom: 10px;
             font-size: 14px;
         }
-        .quick-access-button {
-            display: inline-block;
-            background-color: #49ADA5;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 16px;
-        }
-        .quick-access-button:hover {
-            background-color: #007bff;
-        }
     </style>
 </head>
 <body>
-    <!-- Main Layout -->
-    <div class="main-layout">
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <h2>Bald Rat Cut Projects</h2>
-            <ul>
-                <li>Inicio</li>
-                <li>Proyectos</li>
-                <li>Perfil</li>
-            </ul>
+    <!-- Contenido Principal -->
+    <div class="content">
+        <!-- Bienvenida Personalizada -->
+        <div class="welcome-message">
+            <span>Hola, <?php echo htmlspecialchars($nombre_estudiante); ?> 👋 Bienvenido.</span>
+            <div class="navbar">
+                <a href="#">Inicio</a>
+                <a href="#">Proyectos</a>
+                <a href="#">Perfil</a>
+            </div>
         </div>
 
-        <!-- Contenido Principal -->
-        <div class="content">
-            <!-- Bienvenida Personalizada -->
-            <div class="welcome-message">
-                Hola, <?php echo htmlspecialchars($nombre_estudiante); ?> 👋 Bienvenido.
+        <!-- Resumen de Actividad -->
+        <div class="summary-cards">
+            <div class="card">
+                <h3>Proyectos Activos</h3>
+                <p><?php echo $proyectos_activos; ?></p>
             </div>
-
-            <!-- Resumen de Actividad -->
-            <div class="summary-cards">
-                <div class="card">
-                    <h3>Proyectos Activos</h3>
-                    <p><?php echo $proyectos_activos; ?></p>
-                </div>
-                <div class="card">
-                    <h3>Postulaciones Pendientes</h3>
-                    <p><?php echo $postulaciones_pendientes; ?></p>
-                </div>
+            <div class="card">
+                <h3>Postulaciones Pendientes</h3>
+                <p><?php echo $postulaciones_pendientes; ?></p>
             </div>
+        </div>
 
-            <!-- Notificaciones Recientes -->
-            <div class="notifications">
-                <h3>Notificaciones Recientes</h3>
-                <ul>
-                    <?php foreach ($notificaciones as $notificacion): ?>
-                        <li><?php echo htmlspecialchars($notificacion); ?></li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-
-            <!-- Botón de Acceso Rápido -->
-            <a href="#" class="quick-access-button">Ver Proyectos</a>
+        <!-- Notificaciones Recientes -->
+        <div class="notifications">
+            <h3>Notificaciones Recientes</h3>
+            <ul>
+                <?php foreach ($notificaciones as $notificacion): ?>
+                    <li><?php echo htmlspecialchars($notificacion); ?></li>
+                <?php endforeach; ?>
+            </ul>
         </div>
     </div>
 </body>
