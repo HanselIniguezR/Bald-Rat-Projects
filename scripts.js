@@ -112,7 +112,7 @@ document.querySelector('.sign-in-container form').addEventListener('submit', asy
 
             // 🔹 Redirigir siempre a main.html después de iniciar sesión
             setTimeout(() => {
-                window.location.href = "main.html";
+                window.location.href = "MenuPrincipal.html";
             }, 1500);
         } else {
             alert("⚠️ No se recibió un token de acceso.");
