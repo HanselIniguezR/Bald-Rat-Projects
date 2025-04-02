@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bald Rat Cut Projects</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles_index.css">
+</head>
+<body class="bg-bone">
+    <div class="overlay"></div>
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="bg-bone text-gray-800 w-64 min-h-screen flex flex-col transition-all duration-300 shadow-lg">
+            <div class="p-4">
+                <h2 class="text-xl font-semibold">Menú</h2>
+            </div>
+            <nav class="flex-1">
+                <ul class="space-y-2 py-4">
+                    <li>
+                        <a href="#" onclick="event.preventDefault(); loadPage('inicio')" class="flex items-center px-4 py-2 hover:bg-gray-300">
+                            <i class="fas fa-home w-6 icon-dark"></i><span class="ml-2">Inicio</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="event.preventDefault(); loadPage('proyectos')" class="flex items-center px-4 py-2 hover:bg-gray-300">
+                            <i class="fas fa-folder w-6 icon-dark"></i><span class="ml-2">Proyectos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="event.preventDefault(); loadPage('chat')" class="flex items-center px-4 py-2 hover:bg-gray-300">
+                            <i class="fas fa-comments w-6 icon-dark"></i><span class="ml-2">Chat y Colaboración</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="event.preventDefault(); loadPage('postulaciones')" class="flex items-center px-4 py-2 hover:bg-gray-300">
+                            <i class="fas fa-file-alt w-6 icon-dark"></i><span class="ml-2">Postulaciones</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="event.preventDefault(); loadPage('publicaciones')" class="flex items-center px-4 py-2 hover:bg-gray-300">
+                            <i class="fas fa-newspaper w-6 icon-dark"></i><span class="ml-2">Publicaciones</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="event.preventDefault(); loadPage('evaluaciones')" class="flex items-center px-4 py-2 hover:bg-gray-300">
+                            <i class="fas fa-star w-6 icon-dark"></i><span class="ml-2">Evaluaciones</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="event.preventDefault(); loadPage('administracion')" class="flex items-center px-4 py-2 hover:bg-gray-300">
+                            <i class="fas fa-cog w-6 icon-dark"></i><span class="ml-2">Administración</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <button id="toggleSidebar" class="p-4 hover:bg-gray-300 icon-dark">
+                <i class="fas fa-bars icon-dark"></i>
+            </button>
+        </aside>
+
+        <!-- Contenido Principal -->
+        <div class="flex-1 flex flex-col">
+            <!-- Header -->
+            <header class="bg-bone shadow-md flex items-center justify-between px-6 py-4">
+                <h1 id="page-title" class="text-xl font-semibold">Inicio</h1>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <button class="p-2 hover:bg-gray-300 rounded-full">
+                            <i class="fas fa-bell icon-dark"></i>
+                            <span id="notification-count" class="absolute top-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center hidden">0</span>
+                        </button>
+                    </div>
+                    <div class="relative">
+                        <button class="flex items-center space-x-2 hover:bg-gray-300 rounded-lg p-2">
+                            <i class="fas fa-user-circle text-xl"></i>
+                            <span class="icon-dark">Usuario</span>
+                            <i class="fas fa-chevron-down icon-dark"></i>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Contenedor dinámico -->
+            <main id="main-content" class="flex-1 p-6 overflow-auto">
+                <div id="dynamic-content" class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-2xl font-semibold mb-4">Bienvenido a Bald Rat Cut Projects</h2>
+                    <p>Selecciona una opción del menú para comenzar.</p>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Contenedor para scripts dinámicos -->
+    <div id="dynamic-scripts"></div>
+
+    <!-- Carga del script principal -->
+    <script src="scripts_index.js"></script>
+</body>
+</html>
