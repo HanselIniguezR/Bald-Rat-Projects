@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bald Rat Cut Projects</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body class="bg-bone">
+  <div class="overlay"></div>
+  <div class="flex h-screen">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="bg-bone text-white w-20 min-h-screen flex flex-col transition-all duration-300">
+      <nav class="flex-1">
+        <ul class="space-y-2 py-4">
+          <li><a href="#" id="inicioLink" class="flex items-center px-4 py-2 hover:bg-gray-200"><i class="fas fa-home w-6 icon-dark"></i><span class="icon-dark hidden">Inicio</span></a></li>
+          <li><a href="reports.html" class="flex items-center px-4 py-2 hover:bg-gray-200"><i class="fas fa-project-diagram w-6 icon-dark"></i><span class="icon-dark hidden">Proyectos</span></a></li>
+          <li><a href="#" id="chatLink" class="flex items-center px-4 py-2 hover:bg-gray-200"><i class="fas fa-comments w-6 icon-dark"></i><span class="icon-dark hidden">Chat y Colaboración</span></a></li>
+          <li><a href="#" id="postulacionesLink" class="flex items-center px-4 py-2 hover:bg-gray-200"><i class="fas fa-file-alt w-6 icon-dark"></i><span class="icon-dark hidden">Postulaciones</span></a></li>
+          <li><a href="#" id="publicacionesLink" class="flex items-center px-4 py-2 hover:bg-gray-200"><i class="fas fa-newspaper w-6 icon-dark"></i><span class="icon-dark hidden">Publicaciones</span></a></li>
+          <li><a href="#" id="evaluacionesLink" class="flex items-center px-4 py-2 hover:bg-gray-200"><i class="fas fa-star w-6 icon-dark"></i><span class="icon-dark hidden">Evaluaciones</span></a></li>
+          <li><a href="#" id="adminLink" class="flex items-center px-4 py-2 hover:bg-gray-200"><i class="fas fa-cog w-6 icon-dark"></i><span class="icon-dark hidden">Administración</span></a></li>
+        </ul>
+      </nav>
+      <button id="toggleSidebar" class="p-4 hover:bg-gray-200 icon-dark"><i class="fas fa-bars icon-dark"></i></button>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col">
+      <header class="bg-bone shadow-md">
+        <div class="flex items-center justify-between px-6 py-4">
+          <div class="flex items-center">
+            <img src="universidad-de-guadalajara-logo-png_seeklogo-370596.png" alt="Logo" class="header-logo" />
+            <h1 class="text-xl font-semibold">Bald Rat Cut Projects</h1>
+          </div>
+          <div class="flex items-center space-x-4">
+            <div class="relative">
+              <button class="p-2 hover:bg-gray-200 rounded-full">
+                <i class="fas fa-bell icon-dark"></i>
+                <span class="absolute top-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center">3</span>
+              </button>
+            </div>
+            <div class="relative">
+              <button class="flex items-center space-x-2 hover:bg-gray-200 rounded-lg p-2">
+                <img src="/api/placeholder/32/32" alt="Usuario" class="h-8 w-8 rounded-full" />
+                <span class="icon-dark">Usuario</span>
+                <i class="fas fa-chevron-down icon-dark"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="flex-1 p-6 overflow-auto">
+        <!-- Contenido Principal -->
+        <div id="contenido-principal" class="bg-bone rounded-lg shadow-md p-6 mb-6">
+          <h2 class="text-2xl font-semibold mb-4">Contenido Principal</h2>
+          <p>El contenido dinámico se cargará aquí según la sección seleccionada.</p>
+        </div>
+
+        <!-- Chat -->
+        <section id="chat-colab" class="hidden bg-white rounded-lg shadow-md p-6">
+          <h2 class="text-2xl font-semibold mb-4">Chat y Colaboraciones</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="col-span-2">
+              <div class="border p-4 rounded-md h-80 overflow-y-scroll bg-gray-100" id="chatMessages">
+                <div class="text-sm mb-2"><strong>Juan:</strong> Hola equipo, ¿ya revisaron el módulo?</div>
+                <div class="text-sm mb-2"><strong>Ana:</strong> Sí, solo falta corregir el bug de validación.</div>
+              </div>
+              <div class="flex mt-4">
+                <input type="text" id="chatInput" class="flex-1 border rounded-l-md px-4 py-2" placeholder="Escribe un mensaje..." />
+                <button onclick="enviarMensaje()" class="bg-blue-600 text-white px-4 py-2 rounded-r-md hover:bg-blue-700">Enviar</button>
+              </div>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2">Colaboradores</h3>
+              <ul class="space-y-2">
+                <li class="flex items-center"><span class="w-3 h-3 bg-green-500 rounded-full mr-2"></span> Ana Gómez</li>
+                <li class="flex items-center"><span class="w-3 h-3 bg-green-500 rounded-full mr-2"></span> Juan Pérez</li>
+                <li class="flex items-center"><span class="w-3 h-3 bg-gray-400 rounded-full mr-2"></span> Roberto Díaz</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Secciones adicionales -->
+        <section id="postulaciones" class="hidden bg-white rounded-lg shadow-md p-6"><h2 class="text-2xl font-semibold mb-4">Postulaciones</h2><p>Gestión de postulaciones realizadas por estudiantes.</p></section>
+        <section id="publicaciones" class="hidden bg-white rounded-lg shadow-md p-6"><h2 class="text-2xl font-semibold mb-4">Publicaciones</h2><p>Publicaciones académicas y artículos disponibles.</p></section>
+        <section id="evaluaciones" class="hidden bg-white rounded-lg shadow-md p-6"><h2 class="text-2xl font-semibold mb-4">Evaluaciones</h2><p>Panel de evaluación de proyectos o participantes.</p></section>
+        <section id="administracion" class="hidden bg-white rounded-lg shadow-md p-6"><h2 class="text-2xl font-semibold mb-4">Administración</h2><p>Opciones administrativas y configuración del sistema.</p></section>
+      </main>
+    </div>
+  </div>
+
+  <script src="assets/js/scripts.js"></script>
+  <script src="assets/js/navegacion.js"></script>
+</body>
+</html>
