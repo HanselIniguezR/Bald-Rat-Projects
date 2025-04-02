@@ -33,6 +33,34 @@
             height: auto;
             margin-right: 10px;
         }
+        /* Estilo para el menú desplegable */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background-color: #F5F5DC;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            z-index: 10;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 8px 12px;
+            text-decoration: none;
+            color: #2d2d2d;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #ddd;
+        }
+
+        /* Mostrar el menú desplegable cuando está activo */
+        .dropdown.active .dropdown-menu {
+            display: block;
+        }
     </style>
 </head>
 <body class="bg-bone">
@@ -110,12 +138,18 @@
                             </button>
                         </div>
                         <!-- User Menu -->
-                        <div class="relative">
-                            <button class="flex items-center space-x-2 hover:bg-gray-200 rounded-lg p-2">
+                        <div class="relative dropdown">
+                            <button class="flex items-center space-x-2 hover:bg-gray-200 rounded-lg p-2" id="userButton">
                                 <img src="/api/placeholder/32/32" alt="Usuario" class="h-8 w-8 rounded-full">
-                                <span class="icon-dark">Usuario</span>
+                                <span class="icon-dark" id="username">Usuario</span>
                                 <i class="fas fa-chevron-down icon-dark"></i>
                             </button>
+                            <!-- Dropdown Menu -->
+                            <div class="dropdown-menu">
+                                <a href="#" class="text-sm" id="profileLink">Perfil</a>
+                                <a href="#" class="text-sm" id="settingsLink">Configuración</a>
+                                <a href="#" class="text-sm" id="logoutLink">Cerrar sesión</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -157,6 +191,34 @@
             for (let span of spans) {
                 span.classList.toggle('hidden');
             }
+        });
+
+        // Mostrar el username desde localStorage
+        const username = localStorage.getItem('username');
+        if (username) {
+            document.getElementById('username').innerText = username;
+        }
+
+        // Mostrar y ocultar el menú desplegable al hacer clic
+        const dropdown = document.querySelector('.dropdown');
+        document.getElementById('userButton').addEventListener('click', function() {
+            dropdown.classList.toggle('active');
+        });
+
+        // Manejo de enlaces en el menú
+        document.getElementById('profileLink').addEventListener('click', function() {
+            window.location.href = 'Perfil.html'; // Cambia la URL al perfil del usuario
+        });
+
+        document.getElementById('settingsLink').addEventListener('click', function() {
+            window.location.href = 'configuracion'; // Cambia la URL a configuración
+        });
+
+        document.getElementById('logoutLink').addEventListener('click', function() {
+            // Eliminar el token de acceso y redirigir al login
+            localStorage.removeItem('access_token');
+            localStorage.removeItem('username');
+            window.location.href = 'login.html'; // Redirigir a la página de inicio de sesión
         });
     </script>
 </body>
