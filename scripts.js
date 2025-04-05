@@ -76,7 +76,7 @@ document.querySelector('.sign-up-container form').addEventListener('submit', asy
     }
 
     try {
-        const response = await sendRequest('https://auth-api-v1-1.onrender.com/auth/register', 'POST', data);
+        const response = await sendRequest('https://auth-api-v2-398o.onrender.com/auth/register', 'POST', data);
         console.log('✅ Registro exitoso:', response);
         showPopup("Usuario registrado correctamente.");
     } catch (error) {
@@ -99,7 +99,7 @@ document.querySelector('.sign-in-container form').addEventListener('submit', asy
     }
 
     try {
-        const response = await sendRequest('https://auth-api-v1-1.onrender.com/auth/login', 'POST', data);
+        const response = await sendRequest('https://auth-api-v2-398o.onrender.com/auth/login', 'POST', data);
 
         if (response.access_token) {
             localStorage.setItem('access_token', response.access_token); // Guardar el token
