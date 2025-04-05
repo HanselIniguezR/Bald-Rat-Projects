@@ -334,3 +334,104 @@ footer a {
     text-decoration: none;
     cursor: pointer;
 }
+
+/* RESPONSIVE DESIGN */
+
+/* Tablets - pantallas medianas */
+@media (max-width: 1024px) {
+  .container {
+    width: 95%;
+    min-height: auto;
+    height: auto;
+  }
+
+  form {
+    padding: 20px;
+  }
+
+  .overlay-panel h1 {
+    font-size: 24px;
+  }
+
+  .overlay-panel p {
+    font-size: 14px;
+  }
+}
+
+/* Smartphones en horizontal o pantallas pequeñas */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    position: static;
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .form-container,
+  .overlay-container {
+    position: static;
+    width: 100%;
+    height: auto;
+    transform: none !important;
+    opacity: 1 !important;
+    z-index: 1;
+  }
+
+  .overlay {
+    width: 100%;
+    left: 0;
+    transform: none !important;
+  }
+
+  .overlay-panel {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .sign-up-container,
+  .sign-in-container {
+    width: 100% !important;
+  }
+
+  .container.right-panel-active .sign-in-container,
+  .container.right-panel-active .sign-up-container {
+    transform: none !important;
+  }
+
+  .container.right-panel-active .overlay-container {
+    transform: none !important;
+  }
+
+  .container.right-panel-active .overlay {
+    transform: none !important;
+  }
+}
+
+/* Smartphones muy pequeños o verticales */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 20px;
+  }
+
+  p,
+  .overlay-panel p {
+    font-size: 13px;
+  }
+
+  button,
+  button.ghost {
+    padding: 10px 20px;
+    font-size: 12px;
+  }
+
+  input {
+    font-size: 14px;
+  }
+
+  .popup-content {
+    width: 90%;
+    margin-top: 50%;
+  }
+}
