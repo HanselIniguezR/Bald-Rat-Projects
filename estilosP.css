@@ -7,7 +7,7 @@
 }
 
 body {
-    background-image: url('../img/cut_edificios.jpg');
+    background-image: url('cut_edificios.jpg');
     background-size: cover;
     background-position: center;
     min-height: 100vh;
