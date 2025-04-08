@@ -81,7 +81,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="reports.html" class="flex items-center px-4 py-2 hover:bg-gray-200">
+                        <a href="reports.html" class="flex items-center px-4 py-2 hover:bg-gray-200" onclick="saveUsername()">
                             <i class="fas fa-project-diagram w-6 icon-dark"></i>
                             <span class="sidebar-text hidden">Proyectos</span>
                         </a>
@@ -237,6 +237,11 @@
                 span.classList.toggle('hidden');
             }
         });
+
+        function saveUsername() {
+            const username = 'HanselIniguezR'; // Puedes reemplazar esto con una forma dinámica de obtener el nombre de usuario
+            localStorage.setItem('username', username);
+        }
     </script>
 </body>
 </html>
