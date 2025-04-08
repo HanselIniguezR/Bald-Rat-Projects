@@ -10,7 +10,6 @@ signInButton.addEventListener('click', () => {
     container.classList.remove("right-panel-active");
 });
 
-// 🔹 Función para enviar solicitudes al backend
 async function sendRequest(url, method, data) {
     try {
         const response = await fetch(url, {
@@ -34,33 +33,27 @@ async function sendRequest(url, method, data) {
     }
 }
 
-// 🔹 Función para mostrar el popup de éxito
 function showPopup(message) {
     const popup = document.getElementById("popup");
     popup.querySelector("p").innerText = message;
     popup.style.display = "block";
 
-    // Agregar el listener para cerrar con 'Esc'
     document.addEventListener('keydown', handleEscKey);
 }
 
-// 🔹 Función para cerrar el popup
 function closePopup() {
     const popup = document.getElementById("popup");
     popup.style.display = "none";
 
-    // Remover el listener cuando el popup esté cerrado
     document.removeEventListener('keydown', handleEscKey);
 }
 
-// 🔹 Función para manejar la tecla 'Esc'
 function handleEscKey(event) {
     if (event.key === 'Escape' || event.key === 'Esc') {
         closePopup();
     }
 }
 
-// 🔹 Enviar datos del formulario de registro
 document.querySelector('.sign-up-container form').addEventListener('submit', async function (e) {
     e.preventDefault();
 
@@ -84,7 +77,6 @@ document.querySelector('.sign-up-container form').addEventListener('submit', asy
     }
 });
 
-// 🔹 Enviar datos del formulario de inicio de sesión
 document.querySelector('.sign-in-container form').addEventListener('submit', async function (e) {
     e.preventDefault();
 
@@ -110,7 +102,7 @@ document.querySelector('.sign-in-container form').addEventListener('submit', asy
             console.log('🔹 Nombre de usuario:', response.username);
             showPopup("Inicio de sesión exitoso.");
 
-            // 🔹 Redirigir siempre a main.html después de iniciar sesión
+            // Redirigir siempre a main.html después de iniciar sesión
             setTimeout(() => {
                 window.location.href = "MenuPrincipal.html";
             }, 1500);
