@@ -238,9 +238,10 @@
             }
         });
 
-        function saveUsername() {
-            const username = 'HanselIniguezR'; // Puedes reemplazar esto con una forma dinámica de obtener el nombre de usuario
-            localStorage.setItem('username', username);
+        // Mostrar el username desde localStorage
+        const username = localStorage.getItem('username');
+        if (username) {
+            document.getElementById('username').innerText = username;
         }
     </script>
 </body>
