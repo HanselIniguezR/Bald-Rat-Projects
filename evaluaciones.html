@@ -67,6 +67,7 @@
       cursor: pointer;
       font-size: 1.5rem;
       color: #d1d5db;
+      transition: color 0.3s;
     }
     .rating-container i.selected {
       color: #f59e0b;
@@ -85,6 +86,17 @@
       font-weight: 600;
       color: #374151;
       margin-bottom: 1.5rem;
+    }
+    .btn-enviar {
+      margin-top: 1rem;
+      background-color: #dc2626;
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+    .btn-enviar:hover {
+      background-color: #b91c1c;
     }
   </style>
 </head>
@@ -177,22 +189,66 @@
         <section class="column w-full mt-10">
           <p class="evaluation-message">¡Evalúanos!: Tus comentarios y sugerencias son importantes</p>
           <div class="bg-white rounded-xl shadow-md w-full md:w-2/3 mx-auto p-6 space-y-4">
-            <!-- Evaluación individual -->
             <div class="border-b border-gray-200 pb-4">
               <h3 class="text-xl font-semibold text-gray-800 mb-2">Evaluación</h3>
-              <div class="rating-container">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
+              <div class="rating-container" id="rating-stars">
+                <i class="fas fa-star" onclick="setRating(1)"></i>
+                <i class="fas fa-star" onclick="setRating(2)"></i>
+                <i class="fas fa-star" onclick="setRating(3)"></i>
+                <i class="fas fa-star" onclick="setRating(4)"></i>
+                <i class="fas fa-star" onclick="setRating(5)"></i>
               </div>
-              <textarea class="comment-box" placeholder="Deja tu comentario..."></textarea>
+              <textarea class="comment-box" id="comentario" placeholder="Deja tu comentario..."></textarea>
+              <button class="btn-enviar" onclick="enviarEvaluacion()">Enviar Evaluación</button>
             </div>
           </div>
         </section>
       </main>
     </div>
   </div>
+
+  <script>
+    let currentRating = 0;
+
+    function setRating(rating) {
+      currentRating = rating;
+      const stars = document.querySelectorAll("#rating-stars i");
+      stars.forEach((star, index) => {
+        star.classList.toggle("selected", index < rating);
+      });
+    }
+
+    async function enviarEvaluacion() {
+      const comentario = document.getElementById("comentario").value.trim();
+      if (currentRating === 0 || comentario === "") {
+        alert("⚠️ Por favor selecciona una calificación y escribe un comentario.");
+        return;
+      }
+
+      const data = {
+        user_id: 1, // En producción esto debe venir del token
+        rating: currentRating,
+        comment: comentario
+      };
+
+      try {
+        const response = await fetch("http://localhost:8000/evaluaciones", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        });
+
+        if (!response.ok) throw new Error("Error al enviar");
+
+        alert("✅ ¡Gracias por tu evaluación!");
+        setRating(0);
+        document.getElementById("comentario").value = "";
+
+      } catch (error) {
+        console.error("Error:", error);
+        alert("❌ Error al enviar evaluación.");
+      }
+    }
+  </script>
 </body>
 </html>
