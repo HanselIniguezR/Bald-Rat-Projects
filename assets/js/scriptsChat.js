@@ -25,12 +25,6 @@ if (username) {
     document.getElementById('username').innerText = username;
 }
 
-// Mostrar y ocultar el menú desplegable al hacer clic
-const dropdown = document.querySelector('.dropdown');
-document.getElementById('userButton').addEventListener('click', function() {
-    dropdown.classList.toggle('active');
-});
-
 // Manejo de enlaces en el menú
 document.getElementById('profileLink').addEventListener('click', function() {
     window.location.href = 'Perfil.html'; // Cambia la URL al perfil del usuario
@@ -46,6 +40,24 @@ document.getElementById('profileLink').addEventListener('click', function() {
     localStorage.removeItem('username');
     window.location.href = 'login.html'; // Redirigir a la página de inicio de sesión
 });
+
+const userButton = document.getElementById('userButton');
+const dropdownMenu = document.getElementById('dropdownMenu');
+const logoutLink = document.getElementById('logoutLink');
+
+// Mostrar/ocultar el menú al hacer clic en el botón
+userButton.addEventListener('click', (e) => {
+  e.stopPropagation(); // Evita que se cierre inmediatamente
+  dropdownMenu.classList.toggle('hidden');
+});
+
+// Cerrar el menú si haces clic fuera de él
+document.addEventListener('click', (e) => {
+  if (!dropdownMenu.classList.contains('hidden')) {
+    dropdownMenu.classList.add('hidden');
+  }
+});
+
 
 function obtenerHora() {
   return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
