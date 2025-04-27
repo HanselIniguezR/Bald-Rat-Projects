@@ -1,5 +1,6 @@
 const secciones = {
   principal: document.getElementById("contenido-principal"),
+  proyectos: document.getElementById("proyectos"),
   chat: document.getElementById("chat-colab"),
   postulaciones: document.getElementById("postulaciones"),
   publicaciones: document.getElementById("publicaciones"),
