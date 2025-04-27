@@ -38,17 +38,18 @@
           </div>
           <div class="flex items-center space-x-4">
             <div class="relative">
-              <button class="p-2 hover:bg-gray-200 rounded-full">
-                <i class="fas fa-bell icon-dark"></i>
-                <span class="absolute top-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center">3</span>
-              </button>
-            </div>
-            <div class="relative">
-              <button class="flex items-center space-x-2 hover:bg-gray-200 rounded-lg p-2">
+              <button id="userButton" class="flex items-center space-x-2 hover:bg-gray-200 rounded-lg p-2">
                 <img src="/api/placeholder/32/32" alt="Usuario" class="h-8 w-8 rounded-full" />
                 <span class="icon-dark" id="username">Usuario</span>
                 <i class="fas fa-chevron-down icon-dark"></i>
               </button>
+            
+              <!-- Dropdown Menu -->
+              <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-50">
+                <a href="#" id="profileLink" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Perfil</a>
+                <a href="#" id="settingsLink" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Configuración</a>
+                <a href="#" id="logoutLink" class="block px-4 py-2 text-red-600 hover:bg-red-100">Cerrar sesión</a>
+              </div>
             </div>
           </div>
         </div>
