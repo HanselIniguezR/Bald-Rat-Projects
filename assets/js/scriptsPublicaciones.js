@@ -8,18 +8,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const formularioPublicacion = document.getElementById('formularioPublicacion');
   const crearPublicacionForm = document.getElementById('crearPublicacionForm');
 
-  if (esAdmin) {
+  // Solo mostrar el formulario si el rol es admin
+  if (rolUsuario === 'admin') {
     formularioPublicacion.classList.remove('hidden');
   }
 
-  // Función para agregar una publicación
   crearPublicacionForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const titulo = document.getElementById('tituloPublicacion').value.trim();
     const descripcion = document.getElementById('descripcionPublicacion').value.trim();
 
     if (titulo === '' || descripcion === '') {
-      alert('Por favor completa todos los campos.');
+      alert('⚠️ Por favor completa todos los campos.');
       return;
     }
 
