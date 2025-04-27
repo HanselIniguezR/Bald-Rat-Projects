@@ -99,15 +99,21 @@ document.querySelector('.sign-in-container form').addEventListener('submit', asy
     }
 
     try {
-        const response = await sendRequest('https://auth-api-v2-398o.onrender.com/auth/login', 'POST', data);
+        const response = await sendRequest('http://localhost:8000/auth/login', 'POST', data);
 
         if (response.access_token) {
             localStorage.setItem('access_token', response.access_token); // Guardar el token
-            localStorage.setItem('role', response.role); // Guardar el rol
-            localStorage.setItem('username', response.username); // Guardar el nombre de usuario
+            localStorage.setItem('role', response.role);                 // Guardar el rol
+            localStorage.setItem('username', response.username);         // Guardar el nombre de usuario
+            localStorage.setItem('email', response.email);               // 🔥 Guardar el email
+            localStorage.setItem('user_id', response.user_id);           // 🔥 Guardar el user_id
+
             console.log('✅ Inicio de sesión exitoso:', response);
             console.log('🔹 Rol del usuario:', response.role);
             console.log('🔹 Nombre de usuario:', response.username);
+            console.log('🔹 Email:', response.email);                   // 🔥 Mostrar en consola
+            console.log('🔹 User ID:', response.user_id);               // 🔥 Mostrar en consola
+
             showPopup("Inicio de sesión exitoso.");
 
             // 🔹 Redirigir siempre a main.html después de iniciar sesión
