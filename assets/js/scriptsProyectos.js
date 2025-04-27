@@ -1,6 +1,7 @@
 // scriptsProyectos.js
 
-
+// Obtener el rol REAL del usuario logueado
+const rolUsuario = localStorage.getItem('role'); // 'admin', 'professor' o 'student'
 
 document.addEventListener('DOMContentLoaded', () => {
   const listaProyectos = document.getElementById('listaProyectos');
@@ -8,22 +9,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const crearProyectoForm = document.getElementById('crearProyectoForm');
 
   if (rolUsuario === 'admin' || rolUsuario === 'professor') {
-    formularioProyecto.classList.remove('hidden');
+    formularioProyecto.classList.remove('hidden'); // Solo admins y profesores ven el formulario
   }
 
   crearProyectoForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const nombre = document.getElementById('nombreProyecto').value.trim();
     const descripcion = document.getElementById('descripcionProyecto').value.trim();
-    const cupos = document.getElementById('cuposProyecto').value.trim();
-    const imagen = document.getElementById('imagenProyecto').value.trim() || 'https://via.placeholder.com/150';
+    const cupos = parseInt(document.getElementById('cuposProyecto').value.trim(), 10);
+    const imagen = document.getElementById('imagenProyecto').value.trim() || 'https://via.placeholder.com/300x200.png?text=Proyecto';
+    const fechaPublicacion = new Date().toLocaleDateString();
 
-    if (nombre === '' || descripcion === '' || cupos === '') {
-      alert('Por favor completa todos los campos requeridos.');
+    if (!nombre || !descripcion || isNaN(cupos) || cupos <= 0) {
+      alert('⚠️ Por favor completa correctamente todos los campos.');
       return;
     }
-
-    const fechaPublicacion = new Date().toLocaleDateString();
 
     const nuevoProyecto = document.createElement('div');
     nuevoProyecto.classList.add('bg-gray-100', 'p-4', 'rounded-md', 'shadow');
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Función simulada de postulación
+// Función simulada de postularse
 function postularse(nombreProyecto) {
-  alert(`Te has postulado al proyecto: ${nombreProyecto}`);
+  alert(`¡Te has postulado al proyecto: ${nombreProyecto}!`);
 }
