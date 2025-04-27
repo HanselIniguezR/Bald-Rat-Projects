@@ -17,7 +17,7 @@
       <nav class="flex-1">
         <ul class="space-y-2 py-4">
           <li><a href="#" id="inicioLink" class="flex items-center px-4 py-2 hover:bg-gray-200"><i class="fas fa-home w-6 icon-dark"></i><span class="icon-dark hidden">Inicio</span></a></li>
-          <li><a href="reports.html" class="flex items-center px-4 py-2 hover:bg-gray-200"><i class="fas fa-project-diagram w-6 icon-dark"></i><span class="icon-dark hidden">Proyectos</span></a></li>
+          <li><a href="#"  id="proyectosLink"class="flex items-center px-4 py-2 hover:bg-gray-200"><i class="fas fa-project-diagram w-6 icon-dark"></i><span class="icon-dark hidden">Proyectos</span></a></li>
           <li><a href="#" id="chatLink" class="flex items-center px-4 py-2 hover:bg-gray-200"><i class="fas fa-comments w-6 icon-dark"></i><span class="icon-dark hidden">Chat y Colaboración</span></a></li>
           <li><a href="#" id="postulacionesLink" class="flex items-center px-4 py-2 hover:bg-gray-200"><i class="fas fa-file-alt w-6 icon-dark"></i><span class="icon-dark hidden">Postulaciones</span></a></li>
           <li><a href="#" id="publicacionesLink" class="flex items-center px-4 py-2 hover:bg-gray-200"><i class="fas fa-newspaper w-6 icon-dark"></i><span class="icon-dark hidden">Publicaciones</span></a></li>
@@ -132,6 +132,28 @@
   </div>
 </section>
 
+<section id="postulaciones" class="hidden bg-white rounded-lg shadow-md p-6">
+  <h2 class="text-2xl font-semibold mb-6">Proyectos Disponibles</h2>
+
+  <!-- Lista de Proyectos -->
+  <div id="listaProyectos" class="space-y-6 mb-10">
+    <!-- Aquí se cargarán los proyectos -->
+    <p class="text-gray-500">No hay proyectos disponibles.</p>
+  </div>
+
+  <!-- Solo para Admins y Profesores -->
+  <div id="formularioProyecto" class="hidden">
+    <h3 class="text-xl font-semibold mb-4">Crear Nuevo Proyecto</h3>
+    <form id="crearProyectoForm" class="flex flex-col space-y-4">
+      <input type="text" id="nombreProyecto" class="border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Nombre del Proyecto" required />
+      <textarea id="descripcionProyecto" rows="4" class="border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Descripción del Proyecto" required></textarea>
+      <input type="number" id="cuposProyecto" class="border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Número de Cupos Disponibles" min="1" required />
+      <input type="text" id="imagenProyecto" class="border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="URL de la Imagen del Proyecto (opcional)" />
+      <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700">Publicar Proyecto</button>
+    </form>
+  </div>
+</section>
+
         <!-- Secciones adicionales -->
         <section id="postulaciones" class="hidden bg-white rounded-lg shadow-md p-6"><h2 class="text-2xl font-semibold mb-4">Postulaciones</h2><p>Gestión de postulaciones realizadas por estudiantes.</p></section>
         <section id="administracion" class="hidden bg-white rounded-lg shadow-md p-6"><h2 class="text-2xl font-semibold mb-4">Administración</h2><p>Opciones administrativas y configuración del sistema.</p></section>
@@ -143,5 +165,6 @@
   <script src="assets/js/navegacionChat.js"></script>
   <script src="assets/js/scriptsEvaluaciones.js"></script>
   <script src="assets/js/scriptsPublicaciones.js"></script>
+  <script src="assets/js/scriptsProyectos.js"></script>
 </body>
 </html>
