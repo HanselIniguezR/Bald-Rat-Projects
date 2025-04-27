@@ -112,59 +112,7 @@
   </div>
 </section>
 
-<script>
-  // Función para manejar el pintado de estrellas
-  const stars = document.querySelectorAll('#rating i');
-  let currentRating = 0;
 
-  stars.forEach(star => {
-    star.addEventListener('mouseover', function () {
-      const value = this.getAttribute('data-value');
-      highlightStars(value);
-    });
-
-    star.addEventListener('click', function () {
-      currentRating = this.getAttribute('data-value');
-      highlightStars(currentRating);
-    });
-
-    star.addEventListener('mouseleave', function () {
-      highlightStars(currentRating);
-    });
-  });
-
-  function highlightStars(rating) {
-    stars.forEach(star => {
-      if (star.getAttribute('data-value') <= rating) {
-        star.classList.add('text-yellow-400');
-        star.classList.remove('text-gray-400');
-      } else {
-        star.classList.add('text-gray-400');
-        star.classList.remove('text-yellow-400');
-      }
-    });
-  }
-
-  // Función para enviar evaluación (puedes personalizar)
-  function enviarEvaluacion() {
-    const comentario = document.getElementById('comentario').value;
-    if (currentRating === 0) {
-      alert('Por favor selecciona una calificación.');
-      return;
-    }
-    if (comentario.trim() === '') {
-      alert('Por favor escribe un comentario.');
-      return;
-    }
-    // Aquí podrías enviar a tu servidor por fetch/ajax
-    alert(`Gracias por tu evaluación!\nCalificación: ${currentRating} estrellas\nComentario: ${comentario}`);
-    
-    // Reiniciar campos si quieres
-    currentRating = 0;
-    highlightStars(currentRating);
-    document.getElementById('comentario').value = '';
-  }
-</script>
 
         <!-- Secciones adicionales -->
         <section id="postulaciones" class="hidden bg-white rounded-lg shadow-md p-6"><h2 class="text-2xl font-semibold mb-4">Postulaciones</h2><p>Gestión de postulaciones realizadas por estudiantes.</p></section>
@@ -176,5 +124,6 @@
 
   <script src="assets/js/scriptsChat.js"></script>
   <script src="assets/js/navegacionChat.js"></script>
+  <script src="assets/js/scriptsEvaluaciones.js"></script>
 </body>
 </html>
