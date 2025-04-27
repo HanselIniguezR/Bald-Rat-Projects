@@ -46,27 +46,20 @@
             <div class="relative">
               <button class="flex items-center space-x-2 hover:bg-gray-200 rounded-lg p-2">
                 <img src="/api/placeholder/32/32" alt="Usuario" class="h-8 w-8 rounded-full" />
-                <span class="icon-dark">Usuario</span>
+                <span class="icon-dark" id="username">Usuario</span>
                 <i class="fas fa-chevron-down icon-dark"></i>
+                <!-- Dropdown Menu -->
+                <div class="dropdown-menu">
+                <a href="#" class="text-sm" id="profileLink">Perfil</a>
+                <a href="#" class="text-sm" id="settingsLink">Configuración</a>
+                <a href="#" class="text-sm" id="logoutLink">Cerrar sesión</a>
+              </div>
               </button>
             </div>
           </div>
         </div>
       </header>
 
-             <!-- User Menu -->
-             <div class="relative dropdown">
-                  <button class="flex items-center space-x-2 hover:bg-gray-200 rounded-lg p-2" id="userButton">
-                      <img src="/api/placeholder/32/32" alt="Usuario" class="h-8 w-8 rounded-full">
-                      <span class="icon-dark" id="username">Usuario</span>
-                      <i class="fas fa-chevron-down icon-dark"></i>
-                  </button>
-                  <!-- Dropdown Menu -->
-                      <div class="dropdown-menu">
-                      <a href="#" class="text-sm" id="profileLink">Perfil</a>
-                      <a href="#" class="text-sm" id="settingsLink">Configuración</a>
-                      <a href="#" class="text-sm" id="logoutLink">Cerrar sesión</a>
-                   </div>
 
       <main class="flex-1 p-6 overflow-auto">
         <!-- Contenido Principal -->
