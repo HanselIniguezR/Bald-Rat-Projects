@@ -18,10 +18,10 @@
         <ul class="space-y-2 py-4">
           <li><a href="MenuPrincipal.html" class="flex items-center px-4 py-2 hover:bg-gray-200"><i class="fas fa-home w-6 icon-dark"></i><span class="icon-dark hidden">Inicio</span></a></li>
           <li><a href="reports.html" class="flex items-center px-4 py-2 hover:bg-gray-200"><i class="fas fa-project-diagram w-6 icon-dark"></i><span class="icon-dark hidden">Proyectos</span></a></li>
-          <li><a href="chat.html" id="chatLink" class="flex items-center px-4 py-2 hover:bg-gray-200"><i class="fas fa-comments w-6 icon-dark"></i><span class="icon-dark hidden">Chat y Colaboración</span></a></li>
-          <li><a href="Postulaciones.html" class="flex items-center px-4 py-2 hover:bg-gray-200"><i class="fas fa-file-alt w-6 icon-dark"></i><span class="icon-dark hidden">Postulaciones</span></a></li>
-          <li><a href="publicaciones.html" class="flex items-center px-4 py-2 hover:bg-gray-200"><i class="fas fa-newspaper w-6 icon-dark"></i><span class="icon-dark hidden">Publicaciones</span></a></li>
-          <li><a href="evaluaciones.html" class="flex items-center px-4 py-2 hover:bg-gray-200"><i class="fas fa-star w-6 icon-dark"></i><span class="icon-dark hidden">Evaluaciones</span></a></li>
+          <li><a href="#" id="chatLink" class="flex items-center px-4 py-2 hover:bg-gray-200"><i class="fas fa-comments w-6 icon-dark"></i><span class="icon-dark hidden">Chat y Colaboración</span></a></li>
+          <li><a href="#" id="postulacionesLink" class="flex items-center px-4 py-2 hover:bg-gray-200"><i class="fas fa-file-alt w-6 icon-dark"></i><span class="icon-dark hidden">Postulaciones</span></a></li>
+          <li><a href="#" id="publicacionesLink" class="flex items-center px-4 py-2 hover:bg-gray-200"><i class="fas fa-newspaper w-6 icon-dark"></i><span class="icon-dark hidden">Publicaciones</span></a></li>
+          <li><a href="#" id="evaluacionesLink" class="flex items-center px-4 py-2 hover:bg-gray-200"><i class="fas fa-star w-6 icon-dark"></i><span class="icon-dark hidden">Evaluaciones</span></a></li>
           <li><a href="#" id="adminLink" class="flex items-center px-4 py-2 hover:bg-gray-200"><i class="fas fa-cog w-6 icon-dark"></i><span class="icon-dark hidden">Administración</span></a></li>
         </ul>
       </nav>
@@ -54,6 +54,20 @@
         </div>
       </header>
 
+             <!-- User Menu -->
+             <div class="relative dropdown">
+                  <button class="flex items-center space-x-2 hover:bg-gray-200 rounded-lg p-2" id="userButton">
+                      <img src="/api/placeholder/32/32" alt="Usuario" class="h-8 w-8 rounded-full">
+                      <span class="icon-dark" id="username">Usuario</span>
+                      <i class="fas fa-chevron-down icon-dark"></i>
+                  </button>
+                  <!-- Dropdown Menu -->
+                      <div class="dropdown-menu">
+                      <a href="#" class="text-sm" id="profileLink">Perfil</a>
+                      <a href="#" class="text-sm" id="settingsLink">Configuración</a>
+                      <a href="#" class="text-sm" id="logoutLink">Cerrar sesión</a>
+                   </div>
+
       <main class="flex-1 p-6 overflow-auto">
         <!-- Contenido Principal -->
         <div id="contenido-principal" class="bg-bone rounded-lg shadow-md p-6 mb-6">
@@ -69,6 +83,37 @@
               <div class="border p-4 rounded-md h-80 overflow-y-scroll bg-gray-100" id="chatMessages">
                 <div class="text-sm mb-2"><strong>Juan:</strong> Hola equipo, ¿ya revisaron el módulo?</div>
                 <div class="text-sm mb-2"><strong>Ana:</strong> Sí, solo falta corregir el bug de validación.</div>
+              </div>
+              <div class="flex mt-4">
+                <input type="text" id="chatInput" class="flex-1 border rounded-l-md px-4 py-2" placeholder="Escribe un mensaje..." />
+                <button id="BotonEnviar" onclick="enviarMensaje()" class="bg-blue-600 text-white px-4 py-2 rounded-r-md hover:bg-blue-700">Enviar</button>
+              </div>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2">Colaboradores</h3>
+              <ul class="space-y-2">
+                 <p class="flex items-center">
+                    <span class="w-3 h-3 bg-green-500 rounded-full mr-2"></span><span id="1"> Colaborador 1</span>
+                 </p>
+                 <p class="flex items-center">
+                    <span class="w-3 h-3 bg-green-500 rounded-full mr-2"></span><span id="2"> Colaborador 2</span>
+                 </p>
+                 <p class="flex items-center">
+                    <span class="w-3 h-3 bg-gray-400 rounded-full mr-2"></span><span id="3"> Colaborador 3</span>
+                 </p>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Evaluaciones -->
+        <section id="chat-colab" class="hidden bg-white rounded-lg shadow-md p-6">
+          <h2 class="text-2xl font-semibold mb-4">Chat y Colaboraciones</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="col-span-2">
+              <div class="border p-4 rounded-md h-80 overflow-y-scroll bg-gray-100" id="chatMessages">
+                <div class="text-sm mb-2"><strong>Juan:</strong> JIJIJA</div>
+                <div class="text-sm mb-2"><strong>Ana:</strong> Eumanito</div>
               </div>
               <div class="flex mt-4">
                 <input type="text" id="chatInput" class="flex-1 border rounded-l-md px-4 py-2" placeholder="Escribe un mensaje..." />
