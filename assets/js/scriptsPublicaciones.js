@@ -1,0 +1,39 @@
+// scriptsPublicaciones.js
+
+// Simular si el usuario actual es admin
+const esAdmin = true; // <-- CAMBIA esto según tu lógica de sesión o autenticación real
+
+document.addEventListener('DOMContentLoaded', () => {
+  const listaPublicaciones = document.getElementById('listaPublicaciones');
+  const formularioPublicacion = document.getElementById('formularioPublicacion');
+  const crearPublicacionForm = document.getElementById('crearPublicacionForm');
+
+  if (esAdmin) {
+    formularioPublicacion.classList.remove('hidden');
+  }
+
+  // Función para agregar una publicación
+  crearPublicacionForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const titulo = document.getElementById('tituloPublicacion').value.trim();
+    const descripcion = document.getElementById('descripcionPublicacion').value.trim();
+
+    if (titulo === '' || descripcion === '') {
+      alert('Por favor completa todos los campos.');
+      return;
+    }
+
+    const nuevaPublicacion = document.createElement('div');
+    nuevaPublicacion.classList.add('bg-gray-100', 'p-4', 'rounded-md', 'shadow');
+    nuevaPublicacion.innerHTML = `
+      <h4 class="text-lg font-semibold mb-2">${titulo}</h4>
+      <p class="text-gray-700">${descripcion}</p>
+    `;
+
+    // Agregar al inicio
+    listaPublicaciones.prepend(nuevaPublicacion);
+
+    // Limpiar formulario
+    crearPublicacionForm.reset();
+  });
+});
