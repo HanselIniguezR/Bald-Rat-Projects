@@ -1,7 +1,7 @@
 // scriptsProyectos.js
 
 // Simular rol de usuario
-const rolUsuario = 'student'; // Opciones: 'admin', 'professor', 'student'
+const rolUsuario = 'admin'; // Opciones: 'admin', 'professor', 'student'
 
 document.addEventListener('DOMContentLoaded', () => {
   const listaProyectos = document.getElementById('listaProyectos');
