@@ -63,6 +63,45 @@
         .sidebar-text {
             color: #000000; /* Texto del menú en negro */
         }
+        .bg-bone {
+            background-color: #F5F5DC; /* Fondo color hueso */
+        }
+        .icon-dark {
+            color: #2d2d2d; /* Color oscuro para los íconos */
+        }
+        .header-logo {
+            width: 50px;
+            height: auto;
+            margin-right: 10px;
+        }
+        /* Estilo para el menú desplegable */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background-color: #F5F5DC;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            z-index: 10;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 8px 12px;
+            text-decoration: none;
+            color: #2d2d2d;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #ddd;
+        }
+
+        /* Mostrar el menú desplegable cuando está activo */
+        .dropdown.active .dropdown-menu {
+            display: block;
+        }
     </style>
 </head>
 <body class="bg-bone">
