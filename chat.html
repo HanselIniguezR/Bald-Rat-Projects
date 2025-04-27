@@ -112,11 +112,28 @@
   </div>
 </section>
 
+<section id="publicaciones" class="hidden bg-white rounded-lg shadow-md p-6">
+  <h2 class="text-2xl font-semibold mb-6">Publicaciones</h2>
 
+  <!-- Publicaciones visibles para todos -->
+  <div id="listaPublicaciones" class="space-y-6 mb-10">
+    <!-- Aquí se cargarán las publicaciones -->
+    <p class="text-gray-500">No hay publicaciones disponibles.</p>
+  </div>
+
+  <!-- Solo visible si es admin -->
+  <div id="formularioPublicacion" class="hidden">
+    <h3 class="text-xl font-semibold mb-4">Crear Nueva Publicación</h3>
+    <form id="crearPublicacionForm" class="flex flex-col space-y-4">
+      <input type="text" id="tituloPublicacion" class="border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Título de la publicación" required />
+      <textarea id="descripcionPublicacion" rows="4" class="border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Descripción o detalles del anuncio..." required></textarea>
+      <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700">Publicar</button>
+    </form>
+  </div>
+</section>
 
         <!-- Secciones adicionales -->
         <section id="postulaciones" class="hidden bg-white rounded-lg shadow-md p-6"><h2 class="text-2xl font-semibold mb-4">Postulaciones</h2><p>Gestión de postulaciones realizadas por estudiantes.</p></section>
-        <section id="publicaciones" class="hidden bg-white rounded-lg shadow-md p-6"><h2 class="text-2xl font-semibold mb-4">Publicaciones</h2><p>Publicaciones académicas y artículos disponibles.</p></section>
         <section id="administracion" class="hidden bg-white rounded-lg shadow-md p-6"><h2 class="text-2xl font-semibold mb-4">Administración</h2><p>Opciones administrativas y configuración del sistema.</p></section>
       </main>
     </div>
@@ -125,5 +142,6 @@
   <script src="assets/js/scriptsChat.js"></script>
   <script src="assets/js/navegacionChat.js"></script>
   <script src="assets/js/scriptsEvaluaciones.js"></script>
+  <script src="assets/js/scriptsPublicaciones.js"></script>
 </body>
 </html>
