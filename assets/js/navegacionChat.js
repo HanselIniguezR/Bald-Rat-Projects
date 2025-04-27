@@ -41,6 +41,7 @@ document.getElementById("chatLink").addEventListener("click", (e) => {
 
 
 document.getElementById("inicioLink").addEventListener("click", (e) => { e.preventDefault(); mostrarSeccion("principal"); });
+document.getElementById("proyectosLink").addEventListener("click", (e) => { e.preventDefault(); mostrarSeccion("proyectos"); });
 document.getElementById("chatLink").addEventListener("click", (e) => { e.preventDefault(); mostrarSeccion("chat"); });
 document.getElementById("postulacionesLink").addEventListener("click", (e) => { e.preventDefault(); mostrarSeccion("postulaciones"); });
 document.getElementById("publicacionesLink").addEventListener("click", (e) => { e.preventDefault(); mostrarSeccion("publicaciones"); });
