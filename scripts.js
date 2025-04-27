@@ -118,7 +118,7 @@ document.querySelector('.sign-in-container form').addEventListener('submit', asy
 
             // 🔹 Redirigir siempre a main.html después de iniciar sesión
             setTimeout(() => {
-                window.location.href = "MenuPrincipal.html";
+                window.location.href = "chat.html";
             }, 1500);
         } else {
             alert("⚠️ No se recibió un token de acceso.");
