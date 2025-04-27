@@ -1,7 +1,7 @@
 // scriptsPublicaciones.js
 
-// Simular si el usuario actual es admin
-const esAdmin = true; // <-- CAMBIA esto según tu lógica de sesión o autenticación real
+// Obtener el rol REAL del usuario logueado
+const rolUsuario = localStorage.getItem('role'); // 'admin', 'professor' o 'student'
 
 document.addEventListener('DOMContentLoaded', () => {
   const listaPublicaciones = document.getElementById('listaPublicaciones');
