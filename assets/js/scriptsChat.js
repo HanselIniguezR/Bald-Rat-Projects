@@ -19,6 +19,34 @@ document.getElementById("toggleSidebar").addEventListener("click", () => {
   for (let span of spans) span.classList.toggle("hidden");
 });
 
+// Mostrar el username desde localStorage
+const username = localStorage.getItem('username');
+if (username) {
+    document.getElementById('username').innerText = username;
+}
+
+// Mostrar y ocultar el menú desplegable al hacer clic
+const dropdown = document.querySelector('.dropdown');
+document.getElementById('userButton').addEventListener('click', function() {
+    dropdown.classList.toggle('active');
+});
+
+// Manejo de enlaces en el menú
+document.getElementById('profileLink').addEventListener('click', function() {
+    window.location.href = 'Perfil.html'; // Cambia la URL al perfil del usuario
+});
+
+    document.getElementById('settingsLink').addEventListener('click', function() {
+    window.location.href = 'configuracion'; // Cambia la URL a configuración
+});
+
+    document.getElementById('logoutLink').addEventListener('click', function() {
+    // Eliminar el token de acceso y redirigir al login
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('username');
+    window.location.href = 'login.html'; // Redirigir a la página de inicio de sesión
+});
+
 function obtenerHora() {
   return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 }
