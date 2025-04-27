@@ -128,7 +128,7 @@
             <header class="bg-bone shadow-md">
                 <div class="flex items-center justify-between px-6 py-4">
                     <div class="flex items-center">
-                        <img src="C:/Users/hanse/Downloads/universidad-de-guadalajara-logo-png_seeklogo-370596.png" alt="Logo" class="header-logo">
+                        <img src="universidad-de-guadalajara-logo-png_seeklogo-370596.png" alt="Logo" class="header-logo">
                         <h1 class="text-xl font-semibold">Bald Rat Cut Projects</h1>
                     </div>
                     <div class="flex items-center space-x-4">
@@ -140,12 +140,18 @@
                             </button>
                         </div>
                         <!-- User Menu -->
-                        <div class="relative">
-                            <button class="flex items-center space-x-2 hover:bg-gray-200 rounded-lg p-2">
+                        <div class="relative dropdown">
+                            <button class="flex items-center space-x-2 hover:bg-gray-200 rounded-lg p-2" id="userButton">
                                 <img src="/api/placeholder/32/32" alt="Usuario" class="h-8 w-8 rounded-full">
-                                <span class="icon-dark">Usuario</span>
+                                <span class="icon-dark" id="username">Usuario</span>
                                 <i class="fas fa-chevron-down icon-dark"></i>
                             </button>
+                            <!-- Dropdown Menu -->
+                            <div class="dropdown-menu">
+                                <a href="#" class="text-sm" id="profileLink">Perfil</a>
+                                <a href="#" class="text-sm" id="settingsLink">Configuración</a>
+                                <a href="#" class="text-sm" id="logoutLink">Cerrar sesión</a>
+                            </div>
                         </div>
                     </div>
                 </div>
