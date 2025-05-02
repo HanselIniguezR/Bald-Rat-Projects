@@ -6,12 +6,20 @@
   <title>Perfil - Bald Rat Cut Projects</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body class="bg-gray-100 min-h-screen flex items-center justify-center">
-  <div class="bg-white shadow-md rounded-lg p-8 w-full max-w-md">
-    <h2 class="text-2xl font-bold mb-6 text-center">Mi Perfil</h2>
-    <div class="space-y-4">
+  <div class="bg-white shadow-md rounded-lg p-8 w-full max-w-md space-y-8">
+    <h2 class="text-2xl font-bold text-center">Mi Perfil</h2>
+
+    <!-- Foto de Perfil -->
+    <div class="flex flex-col items-center">
+      <img id="fotoPerfilPreview" src="assets/images/default-profile.png" alt="Foto de Perfil" class="w-24 h-24 rounded-full object-contain bg-gray-100 p-1 mb-4 border">
+      <input type="file" id="input-fotoPerfil" accept="image/*" class="text-sm mb-4" />
+      <button id="guardarFotoBtn" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-md">Guardar Foto</button>
+    </div>
+
+    <!-- Datos visibles -->
+    <div class="space-y-2">
       <div>
         <p class="text-gray-600 text-sm">Nombre de Usuario</p>
         <p id="perfil-username" class="text-lg font-semibold"></p>
@@ -29,7 +37,15 @@
         <p id="perfil-userid" class="text-lg font-semibold"></p>
       </div>
     </div>
-    <div class="mt-8 text-center">
+
+    <!-- Actualizar contraseña -->
+    <div>
+      <label for="input-password" class="text-gray-600 text-sm">Nueva Contraseña</label>
+      <input type="password" id="input-password" class="w-full border rounded-md p-2 mt-2" placeholder="Nueva contraseña" />
+      <button id="actualizarPasswordBtn" class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md">Actualizar Contraseña</button>
+    </div>
+
+    <div class="text-center mt-4">
       <a href="chat.html" class="text-blue-600 hover:underline text-sm">Volver al Menú Principal</a>
     </div>
   </div>
