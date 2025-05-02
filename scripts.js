@@ -76,7 +76,7 @@ document.querySelector('.sign-up-container form').addEventListener('submit', asy
     }
 
     try {
-        const response = await sendRequest('https://auth-api-v2-398o.onrender.com/auth/register', 'POST', data);
+        const response = await sendRequest('https://auth-api-v3.onrender.com/auth/register', 'POST', data);
         console.log('✅ Registro exitoso:', response);
         showPopup("Usuario registrado correctamente.");
     } catch (error) {
@@ -99,7 +99,7 @@ document.querySelector('.sign-in-container form').addEventListener('submit', asy
     }
 
     try {
-        const response = await sendRequest('http://localhost:8000/auth/login', 'POST', data);
+        const response = await sendRequest('https://auth-api-v3.onrender.com/auth/login', 'POST', data);
 
         if (response.access_token) {
             localStorage.setItem('access_token', response.access_token); // Guardar el token
@@ -118,7 +118,7 @@ document.querySelector('.sign-in-container form').addEventListener('submit', asy
 
             // 🔹 Redirigir siempre a main.html después de iniciar sesión
             setTimeout(() => {
-                window.location.href = "chat.html";
+                window.location.href = "Chat.html";
             }, 1500);
         } else {
             alert("⚠️ No se recibió un token de acceso.");
@@ -127,4 +127,14 @@ document.querySelector('.sign-in-container form').addEventListener('submit', asy
         console.error(error);
     }
 });
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const fotoPerfil = localStorage.getItem('foto_perfil');
+    const userProfilePic = document.getElementById('userProfilePic');
+
+    if (fotoPerfil && userProfilePic) {
+      userProfilePic.src = fotoPerfil;
+    }
+  });
 
