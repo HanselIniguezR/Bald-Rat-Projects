@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:8000/auth/update_user/${userId}`, {
+      const response = await fetch(`https://auth-api-v3.onrender.com/auth/update_user/${userId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
