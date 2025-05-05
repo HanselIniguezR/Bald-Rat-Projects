@@ -34,7 +34,7 @@ async function enviarEvaluacion() {
   if (comentario === '') return alert('⚠️ Por favor escribe un comentario.');
 
   try {
-    const response = await fetch("http://localhost:8001/evaluaciones/", {
+    const response = await fetch("https://evaluaciones-api-v1.onrender.com/evaluaciones/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -68,7 +68,7 @@ async function cargarEvaluaciones() {
   const verMasBtn = document.getElementById('ver-mas-btn');
 
   try {
-    const response = await fetch("http://localhost:8001/evaluaciones/");
+    const response = await fetch("https://evaluaciones-api-v1.onrender.com/evaluaciones/");
     if (!response.ok) throw new Error("Error al obtener evaluaciones.");
     const data = await response.json();
 
