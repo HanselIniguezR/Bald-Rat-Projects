@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 function fetchNotifications() {
-    fetch("http://localhost:5000/notifications?user_id=1")
+    fetch("https://notificaciones-api-v2.onrender.com/notifications?user_id=1")
         .then(response => response.json())
         .then(data => {
             console.log("Notificaciones recibidas:", data);
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     registerButton.addEventListener("click", function () {
-        fetch("http://localhost:5000/send_welcome_email", {
+        fetch("https://notificaciones-api-v2.onrender.com/send_welcome_email", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 function sendMessageNotification(userId, senderName) {
-    fetch("http://localhost:5000/send_message_notification", {
+    fetch("https://notificaciones-api-v2.onrender.com/send_message_notification", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user_id: userId, sender_name: senderName })
@@ -92,7 +92,7 @@ function sendMessageNotification(userId, senderName) {
 
 
 function updateTramiteStatus(tramiteId, userId, newStatus, tramiteName) {
-    fetch("http://localhost:5000/update_tramite_status", {
+    fetch("https://notificaciones-api-v2.onrender.com/update_tramite_status", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ tramite_id: tramiteId, user_id: userId, new_status: newStatus, tramite_name: tramiteName })
@@ -103,7 +103,7 @@ function updateTramiteStatus(tramiteId, userId, newStatus, tramiteName) {
 }
 
 function sendWelcomeNotification(userId) {
-    fetch("http://localhost:5000/send_welcome_notification", {
+    fetch("https://notificaciones-api-v2.onrender.com/send_welcome_notification", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user_id: userId })

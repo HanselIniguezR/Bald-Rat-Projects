@@ -8,6 +8,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/stylesChat.css" />
+  <script src="scriptnotificaciones.js"></script>
 </head>
 <body class="bg-bone">
   <div class="overlay"></div>
@@ -37,11 +38,18 @@
             <h1 class="text-xl font-semibold">Bald Rat Cut Projects</h1>
           </div>
           <div class="flex items-center space-x-4">
-            <div class="relative">
-              <button class="p-2 hover:bg-gray-200 rounded-full">
-                <i class="fas fa-bell icon-dark"></i>
-                <span class="absolute top-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center">3</span>
-              </button>
+            <div class="flex items-center space-x-6">
+              <!-- Notifications -->
+              <div class="notification-container">
+                <div class="notification-icon" onclick="toggleNotifications()">
+                    🔔 <span id="notification-count">0</span>
+                </div>
+                <div id="notification-dropdown" class="notification-dropdown">
+                    <h3>Notificaciones</h3>
+                    <ul id="notification-list">
+                        <li>Cargando notificaciones...</li>
+                    </ul>
+                </div>
             </div>
             <div class="relative">
               <button id="userButton" class="flex items-center space-x-2 hover:bg-gray-200 rounded-lg p-2">
@@ -257,6 +265,86 @@
       }
     });
   </script>
+
+<style>
+  @keyframes highlight {
+      from { background: #fff176; }
+      to { background: #ffeb3b; }
+  }
+  
+  @media (max-width: 768px) {
+      .notification-container {
+          width: 250px;
+          right: 10px;
+          top: 10px;
+      }
+  }
+  
+  .notification-container {
+      position: relative;
+  }
+  
+  .notification-icon {
+      background: #ff9800;
+      color: white;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      position: relative;
+  }
+  
+  .notification-icon span {
+      background: red;
+      color: white;
+      font-size: 12px;
+      border-radius: 50%;
+      padding: 2px 6px;
+      position: absolute;
+      top: -5px;
+      right: -5px;
+  }
+  
+  .notification-dropdown {
+      display: none;
+      position: absolute;
+      top: 40px;
+      right: 0;
+      background: white;
+      border: 1px solid #ccc;
+      width: 250px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      padding: 10px;
+      z-index: 1000;
+  }
+  
+  .notification-dropdown h3 {
+      margin: 0;
+      font-size: 16px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+  }
+  
+  .notification-dropdown ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+  }
+  
+  .notification-dropdown ul li {
+      padding: 8px;
+      border-bottom: 1px solid #eee;
+  }
+  
+  .notification-dropdown ul li:last-child {
+      border-bottom: none;
+  }
+  
+  .hidden {
+      display: none;
+  }
+  </style>
+
   
 </body>
 </html>

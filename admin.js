@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("Datos del formulario:", formData);
     
             // Enviar la solicitud al servidor
-            fetch("http://localhost:5000/save_notification", {
+            fetch("https://notificaciones-api-v2.onrender.com/save_notification", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function fetchNotifications() {
-    fetch("http://localhost:5000/notifications")  // sin user_id
+    fetch("https://notificaciones-api-v2.onrender.com/notifications")  // sin user_id
         .then(response => response.json())
         .then(data => {
             console.log("Notificaciones recibidas:", data);
