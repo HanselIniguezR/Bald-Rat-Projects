@@ -1,0 +1,47 @@
+
+
+services:
+  notification-api:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      DB_URL: "mysql://root:eNYOSszOaQfbxPjBtGAAOHSTUjQFxpUx@metro.proxy.rlwy.net:19577/railway"
+    depends_on:
+      - db
+    develop:
+      watch:
+        - action: sync
+          path: ./web
+          target: /src/web
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: package.json
+
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: eNYOSszOaQfbxPjBtGAAOHSTUjQFxpUx
+      MYSQL_DATABASE: railway
+    ports:
+      - "3306:3306"
+
+  email-notifications:
+    build: .
+    restart: always
+    environment:
+      EMAIL_USER: "baldrat20@gmail.com"
+      EMAIL_PASS: "baldrat0192"
+    ports:
+      - "5001:5001"
+    develop:
+      watch:
+        - action: sync
+          path: ./web
+          target: /src/web
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: package.json

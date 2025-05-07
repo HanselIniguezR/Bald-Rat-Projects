@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Notificaciones</title>
+    <link rel="stylesheet" href="adminestilos.css"> <!-- Asegurar que los estilos coincidan con notiAdm.html -->
+</head>
+<body>
+    <header>
+        <h1>Gestión de Notificaciones</h1>
+    </header>
+    <main>
+        <!-- Sección principal (Guardar en BD + Enviar en directo) -->
+        <section class="main-notifications">
+            <h2>Gestionar Notificaciones</h2>
+            <form id="save-notification-form">
+                <label for="notification-id">ID de Notificación:</label>
+                <input type="text" id="notification-id" required>
+    
+                <label for="user-id">ID de Usuario:</label>
+                <input type="text" id="user-id" required>
+    
+                <label for="type">Tipo:</label>
+                <input type="text" id="type" value="system" readonly>
+    
+                <label for="title">Título:</label>
+                <input type="text" id="title" required>
+    
+                <label for="message">Mensaje:</label>
+                <textarea id="message" required></textarea>
+    
+                <label for="status">Estado:</label>
+                <select id="status">
+                    <option value="pending">Pendiente</option>
+                    <option value="sent">Enviada</option>
+                </select>
+    
+                <label for="created-at">Fecha de Creación:</label>
+                <input type="datetime-local" id="created-at" required>
+    
+                <label for="read-at">Fecha de Lectura:</label>
+                <input type="datetime-local" id="read-at">
+    
+                <!-- Botones alineados -->
+                <div class="button-group">
+                    <button type="submit">Guardar en BD</button>
+                    <button id="send-live-notification">Enviar en Directo</button>
+                </div>
+            </form>
+        </section>
+    
+        <!-- Sección secundaria (Enviar Notificación Específica) -->
+        <section class="secondary-notifications">
+            <h2>Enviar Notificación Específica</h2>
+            <form id="send-specific-notification">
+                <label for="specific-notification-id">ID de Notificación:</label>
+                <input type="text" id="specific-notification-id" required>
+    
+                <label for="target-user">Enviar a:</label>
+                <select id="target-user">
+                    <option value="specific">Usuario Específico</option>
+                    <option value="all">Todos los Usuarios</option>
+                </select>
+    
+                <input type="text" id="specific-user-id" placeholder="ID del Usuario (si aplica)">
+    
+                <button type="submit">Enviar Notificación</button>
+            </form>
+        </section>
+        <section class="saved-notifications">
+            <span id="notification-count"></span>
+            <div id="notification-list"></div>
+
+            <h2>Notificaciones Guardadas</h2>
+            <div id="notifications-list">
+                <p>Cargando notificaciones...</p>
+            </div>
+        </section>
+    </main>
+    
+    <script src="admin.js"></script>
+    
+</body>
+</html>

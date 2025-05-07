@@ -1,0 +1,8 @@
+flask
+flask_socketio
+flask_cors
+pymysql
+eventlet
+cryptography
+mysql-connector-python
+pymysql
