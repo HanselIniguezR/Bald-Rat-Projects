@@ -203,7 +203,6 @@
 
   <!-- Lista de Proyectos -->
   <div id="listaProyectos" class="space-y-6 mb-10">
-    <!-- Aquí se cargarán dinámicamente los proyectos -->
     <p class="text-gray-500">No hay proyectos disponibles.</p>
   </div>
 
@@ -211,14 +210,15 @@
   <div id="formularioProyecto" class="hidden">
     <h3 class="text-xl font-semibold mb-4">Crear Nuevo Proyecto</h3>
     <form id="crearProyectoForm" class="flex flex-col space-y-4">
-      <input type="text" id="nombreProyecto" class="border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Nombre del Proyecto" required />
-      <textarea id="descripcionProyecto" rows="4" class="border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Descripción del Proyecto" required></textarea>
-      <input type="number" id="cuposProyecto" class="border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Número de Cupos Disponibles" min="1" required />
-      <input type="text" id="imagenProyecto" class="border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="URL de la Imagen del Proyecto (opcional)" />
-      <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700">Publicar Proyecto</button>
+      <input type="text" id="nombreProyecto" class="border border-blue-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Nombre del Proyecto" required />
+      <textarea id="descripcionProyecto" rows="4" class="border border-blue-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Descripción del Proyecto" required></textarea>
+      <input type="number" id="cuposProyecto" class="border border-blue-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Número de Cupos Disponibles" min="1" required />
+      <input type="text" id="imagenProyecto" class="border border-blue-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="URL de la Imagen del Proyecto (opcional)" />
+      <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-all">Publicar Proyecto</button>
     </form>
   </div>
 </section>
+
 
 <section id="postulaciones" class="hidden bg-white rounded-lg shadow-md p-6">
   <h2 class="text-2xl font-semibold mb-6">Mis Postulaciones</h2>
