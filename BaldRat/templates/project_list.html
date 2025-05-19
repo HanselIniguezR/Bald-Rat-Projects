@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Listado de Proyectos{% endblock %}
+
+{% block content %}
+<div class="container mx-auto p-4">
+    <h1 class="text-3xl font-bold mb-6">Proyectos Disponibles</h1>
+    <div class="bg-bone p-4 rounded-lg shadow-md">
+        <!-- Filtro por Estado -->
+        <form method="GET" class="mb-4">
+            <label for="filter_status" class="block text-gray-700 text-sm font-bold mb-2">
+                Filtrar por Estado:
+            </label>
+            <select id="filter_status" name="status" onchange="this.form.submit()" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <option value="">Todos</option>
+                <option value="open"{% if request.args.get('status') == 'open' %} selected{% endif %}>Abierto</option>
+                <option value="closed"{% if request.args.get('status') == 'closed' %} selected{% endif %}>Cerrado</option>
+                <option value="completed"{% if request.args.get('status') == 'completed' %} selected{% endif %}>Completado</option>
+            </select>
+        </form>
+
+        <!-- Lista de Proyectos -->
+        <table class="w-full">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2">Título</th>
+                    <th class="px-4 py-2">Área de Conocimiento</th>
+                    <th class="px-4 py-2">Estado</th>
+                    <th class="px-4 py-2">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for project in projects %}
+                <tr>
+                    <td class="border px-4 py-2">{{ project.title }}</td>
+                    <td class="border px-4 py-2">{{ project.category }}</td>
+                    <td class="border px-4 py-2">{{ project.status }}</td>
+                    <td class="border px-4 py-2">
+                        <a href="{{ url_for('project_details', project_id=project.project_id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mr-2">
+                            Ver Detalles
+                        </a>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4" class="text-center">No hay proyectos disponibles.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

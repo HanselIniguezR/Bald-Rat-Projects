@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Proyecto{% endblock %}
+
+{% block content %}
+<div class="container mx-auto p-4">
+    <h1 class="text-3xl font-bold mb-6">Editar Proyecto</h1>
+    <form method="POST" action="{{ url_for('edit_project', project_id=project.project_id) }}" class="bg-bone p-4 rounded-lg shadow-md">
+        <!-- ID del Proyecto (oculto) -->
+        <input type="hidden" name="project_id" value="{{ project.project_id }}">
+
+        <!-- Título -->
+        <div class="mb-4">
+            <label for="title" class="block text-gray-700 text-sm font-bold mb-2">
+                Título del Proyecto:
+            </label>
+            <input type="text" id="title" name="title" value="{{ project.title }}" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+
+        <!-- Descripción -->
+        <div class="mb-4">
+            <label for="description" class="block text-gray-700 text-sm font-bold mb-2">
+                Descripción Detallada:
+            </label>
+            <textarea id="description" name="description" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">{{ project.description }}</textarea>
+        </div>
+
+        <!-- Requisitos -->
+        <div class="mb-4">
+            <label for="requirements" class="block text-gray-700 text-sm font-bold mb-2">
+                Requisitos para Participar:
+            </label>
+            <textarea id="requirements" name="requirements" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">{{ project.requirements }}</textarea>
+        </div>
+
+        <!-- Categoría -->
+        <div class="mb-4">
+            <label for="category" class="block text-gray-700 text-sm font-bold mb-2">
+                Área de Conocimiento:
+            </label>
+            <input type="text" id="category" name="category" value="{{ project.category }}" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+
+        <!-- Profesor/Investigador -->
+        <div class="mb-4">
+            <label for="professor_id" class="block text-gray-700 text-sm font-bold mb-2">
+                ID del Profesor/Investigador:
+            </label>
+            <input type="number" id="professor_id" name="professor_id" value="{{ project.professor_id }}" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+
+        <!-- Estado -->
+        <div class="mb-4">
+            <label for="status" class="block text-gray-700 text-sm font-bold mb-2">
+                Estado del Proyecto:
+            </label>
+            <select id="status" name="status" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <option value="open"{% if project.status == 'open' %} selected{% endif %}>Abierto</option>
+                <option value="closed"{% if project.status == 'closed' %} selected{% endif %}>Cerrado</option>
+                <option value="completed"{% if project.status == 'completed' %} selected{% endif %}>Completado</option>
+            </select>
+        </div>
+
+        <!-- Fecha de Inicio -->
+        <div class="mb-4">
+            <label for="start_date" class="block text-gray-700 text-sm font-bold mb-2">
+                Fecha de Inicio:
+            </label>
+            <input type="date" id="start_date" name="start_date" value="{{ project.start_date }}" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+
+        <!-- Fecha de Finalización (opcional) -->
+        <div class="mb-4">
+            <label for="end_date" class="block text-gray-700 text-sm font-bold mb-2">
+                Fecha de Finalización (opcional):
+            </label>
+            <input type="date" id="end_date" name="end_date" value="{{ project.end_date }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+
+        <h3>Colaboradores</h3>
+        {% for collaborator in collaborators %}
+            <input type="hidden" name="collaborator_id" value="{{ collaborator.collaborator_id }}">
+
+            <label for="student_id_{{ collaborator.collaborator_id }}">ID del Estudiante:</label>
+            <input type="number" id="student_id_{{ collaborator.collaborator_id }}" name="student_id" value="{{ collaborator.student_id }}" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+
+            <label for="role_{{ collaborator.collaborator_id }}">Rol:</label>
+            <select id="role_{{ collaborator.collaborator_id }}" name="role" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <option value="assistant" {% if collaborator.role == 'assistant' %}selected{% endif %}>assistant</option>
+                <option value="researcher" {% if collaborator.role == 'researcher' %}selected{% endif %}>researcher</option>
+                <option value="intern" {% if collaborator.role == 'intern' %}selected{% endif %}>intern</option>
+            </select>
+
+            <label for="collaborator_status_{{ collaborator.collaborator_id }}">Estado:</label>
+            <select id="collaborator_status_{{ collaborator.collaborator_id }}" name="collaborator_status" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <option value="active" {% if collaborator.status == 'active' %}selected{% endif %}>active</option>
+                <option value="completed" {% if collaborator.status == 'completed' %}selected{% endif %}>completed</option>
+                <option value="left" {% if collaborator.status == 'left' %}selected{% endif %}>left</option>
+            </select>
+        {% endfor %}
+
+        <!-- Botón de Actualizar -->
+        <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            Guardar Cambios
+        </button>
+    </form>
+</div>
+{% endblock %}
